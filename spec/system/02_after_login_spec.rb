@@ -3,7 +3,7 @@ require 'rails_helper'
 describe '[STEP2] ユーザログイン後のテスト' do
   let(:user) { create(:user) }
   let!(:other_user) { create(:user) }
-  let!(:book) { create(:book, user: user) }
+  let!(:book) { create(:book, user:) }
   let!(:other_book) { create(:book, user: other_user) }
 
   before do
@@ -19,19 +19,19 @@ describe '[STEP2] ユーザログイン後のテスト' do
 
       it 'Homeを押すと、自分のユーザ詳細画面に遷移する' do
         home_link = find_all('a')[1].native.inner_text
-        home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        home_link = home_link.delete("\n").gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link home_link
         is_expected.to eq '/users/' + user.id.to_s
       end
       it 'Usersを押すと、ユーザ一覧画面に遷移する' do
         users_link = find_all('a')[2].native.inner_text
-        users_link = users_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        users_link = users_link.delete("\n").gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link users_link
         is_expected.to eq '/users'
       end
       it 'Booksを押すと、投稿一覧画面に遷移する' do
         books_link = find_all('a')[3].native.inner_text
-        books_link = books_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        books_link = books_link.delete("\n").gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link books_link
         is_expected.to eq '/books'
       end
