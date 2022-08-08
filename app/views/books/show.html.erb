@@ -60,15 +60,11 @@
         </tr>
         <% end %>
       </table>
-      <%=form_with model: [@book,@post_comment] do |f| %>
-      <table class= "table">
-        <!--コメント欄-->
-        <thead>
-            <%=f.text_area :comment ,rows: '5' %><br>
-            <%=f.submit '送信' %>
-          <% end %>
-        </thead>
-      </table>
+        
+        <%= form_with(model:[@book,@post_comment], local: true)do |f| %>
+          <%= f.text_area :comment,rows:"5",placeholder: "コメントをここに",class: "w-100" %>
+          <%= f.submit '送信する',class:"btn btn-lg btn-base-1 mt-20 pull-right" %>
+        <% end %>
     </div>
   </div>
 </div>
