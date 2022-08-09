@@ -13,7 +13,7 @@
         <td><%= user.name %></td>
         <td>
           <% if user ==current_user %>
-            いね
+            your account
           <% else %>
             <% if user.is_followed_by?(current_user) %>
               <%= link_to 'フォロー解除する', user_relationships_path(user),method: :delete %>
