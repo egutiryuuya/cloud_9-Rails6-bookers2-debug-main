@@ -22,4 +22,10 @@ class RelationshipsController < ApplicationController
     user =User.find(params[:user_id])
     @users = user.followers
   end
+  
+  def index
+    @user=User.find(params[:id])
+    @user_follower=@user.follower_id
+    @user_following=@user.following_id
+  end
 end
