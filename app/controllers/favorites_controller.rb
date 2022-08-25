@@ -5,6 +5,8 @@ class FavoritesController < ApplicationController
     favorite.save
     
   end
+  
+  
 
   def destroy 
     @book=Book.find(params[:book_id])
