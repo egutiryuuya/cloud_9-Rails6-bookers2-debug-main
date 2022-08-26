@@ -38,6 +38,10 @@ class User < ApplicationRecord
     reverse_of_relationships.find_by(following_id: user.id).present?
   end
   
+  def following?(user)
+    followings.include?(user)
+  end
+  
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"

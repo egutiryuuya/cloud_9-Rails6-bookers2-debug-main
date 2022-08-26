@@ -35,6 +35,9 @@
   <% else %>
     <% if user.is_followed_by?(current_user) %>
       <%=link_to "フォロー解除する",user_relationships_path(user),method: :delete,class:"btn btn-danger"%>
+      <% if user.following?(current_user) %>
+      <%=link_to "チャットする",chat_path(user.id) %>
+      <% end %>
     <%else %>
       <%=link_to "フォローする",user_relationships_path(user),method: :post,class:"btn btn-success" %>
     <% end %>
