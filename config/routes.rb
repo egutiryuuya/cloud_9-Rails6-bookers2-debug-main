@@ -2,8 +2,7 @@ Rails.application.routes.draw do
  
   get 'chats/:id', to: "chats#show", as: "chat"
   resources :chats, only: [:create]
-  get 'relationships/create'
-  get 'relationships/destroy'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
   root to: "homes#top"
