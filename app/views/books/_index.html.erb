@@ -20,6 +20,10 @@
         <!--非同期-->
           <td id ="book_<%= book.id%>"><%= render "favorites/favorites",book: book %></td>
         <td><%= "コメント数#{book.post_comments.count}"%></td>
+        <td>閲覧数<%=book.impressionist_count %></td>
+        
+        <!--IPアドレスごとのカウント数-->
+        <!--<td>閲覧数：<%=See.count %></td>-->
       </tr>
     <% end %>
   </tbody>

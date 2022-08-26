@@ -17,6 +17,14 @@ class BooksController < ApplicationController
     a.favorited_users.size
     }
     @book = Book.new
+    # IPアドレスごとのアクセス数
+    # @see = See.find_by(ip: request.remote_ip)
+    #   if @see
+    #     @views = Book.all
+    #   else
+    #     @views = Book.all
+    #     See.create(ip: request.remote_ip)
+    #   end
   end
   
   def create
