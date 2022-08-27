@@ -20,6 +20,8 @@ require("@rails/activestorage").start()
 require("channels")
 
 require('jquery')
+require('chartkick')
+require('chart.js')
 
 
 

@@ -9,12 +9,12 @@ class BooksController < ApplicationController
   end
 
   def index
-     from = Time.current.at_beginning_of_day
-     to =(from + 6.day).at_end_of_day
-    @books = Book.includes(:favorited_users).where(created_at: from...to).
+     to = Time.current.at_beginning_of_day
+     from =(to - 6.day).at_end_of_day
+    @books = Book.includes(:favorited_users).
     sort{|a,b| 
-    b.favorited_users.size <=> 
-    a.favorited_users.size
+    b.favorites.where(created_at: from...to).size <=> 
+    a.favorites.where(created_at: from...to).size 
     }
     @book = Book.new
     # IPアドレスごとのアクセス数

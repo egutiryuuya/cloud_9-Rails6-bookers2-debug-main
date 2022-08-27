@@ -2,9 +2,21 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: %i[update edit]
 
   def show
+    
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    @today_book = @books.created_today
+    @yesterday_book = @books.created_yesterday
+    @yesterday2 =@books.created_yesterday2
+    @yesterday3 =@books.created_yesterday3
+    @yesterday4 =@books.created_yesterday4
+    @yesterday5 =@books.created_yesterday5
+    @yesterday6 =@books.created_yesterday6
+    
+    @this_week = @books.created_thisweek
+    @last_week =@books.created_lastweek
+    
   end
 
   def index
