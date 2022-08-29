@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: %i[update edit]
 
   def show
-    
+    # グラフ作成前
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
@@ -49,6 +49,17 @@ class UsersController < ApplicationController
     @users=user.followers
   end
   
+  def search
+    @user =User.find(params[:user_id])
+    @books = @user.books
+    @book = Book.new
+    if params[:created_at]==nil
+      @search_book = "日付を入力してください"
+    else
+      created_at = params[:created_at]
+      @search_book = @books.where(['created_at LIKE ?',"#{created_at}%"]).count
+    end
+  end
   
   private
 

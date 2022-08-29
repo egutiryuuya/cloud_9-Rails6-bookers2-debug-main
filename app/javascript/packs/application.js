@@ -27,3 +27,4 @@ require('chart.js')
 
 Turbolinks.start()
 ActiveStorage.start()
+$(document).on('turbolinks:load', function() { });

@@ -8,8 +8,12 @@
     
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
+    <% if content_for?(:body_attributes) %>
+    <%= yield(:body_attributes) %>
+    <% end %>>
     <%= render 'layouts/header' %>
     <div class="mx-auto"><div><%= render 'searches/search' %></div></div>
       <main>

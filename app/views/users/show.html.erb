@@ -1,4 +1,8 @@
+<% content_for(:body_attributes) do %>
+    data-turbolinks="false"
+<% end %>
 <div class='container px-5 px-sm-0'>
+  <!--data: [<%= @yesterday6.count %>, <%= @yesterday5.count %>, <%= @yesterday4.count %>, <%= @yesterday3.count %>, <%= @yesterday2.count %>, <%= @yesterday_book.count %>, <%= @today_book.count%>],-->
   <div class='row'>
     <div class='col-md-3'>
       <h2>User info</h2>
@@ -89,17 +93,17 @@
                 </tr>
               </tbody>
             </table>
-            <canvas id="myChart" width="300" height="100"> </canvas>
+　　　　<canvas id="myChart" width="300" height="100"> </canvas>
 
-    <script> 
+    <script>
     var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'line',                      
+        type: 'line',
         data: {
             labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
             datasets: [{
                 label: "投稿数",
-                data: [<%= @books.created_yesterday6.count %>, <%= @books.created_yesterday5.count %>, <%= @books.created_yesterday4.count %>, <%= @books.created_yesterday3.count %>, <%= @books.created_yesterday2.count %>, <%= @yesterday_book.count %>, <%= @today_book.count%>],
+                data: [<%= @yesterday6.count %>, <%= @yesterday5.count %>, <%= @yesterday4.count %>, <%= @yesterday3.count %>, <%= @yesterday2.count %>, <%= @yesterday_book.count %>, <%= @today_book.count%>],
                 backgroundColor: 'rgba(255, 80, 120, 1.0)',
                 borderColor: 'rgba(255, 80, 120, 1.0)',
                 fill: false
@@ -107,6 +111,19 @@
         },
     });
 </script>
+<div>
+ <%= form_with url: user_search_path(@user), method: :get, local: false do |f| %>
+   <%= f.date_field :created_at %>
+   <%= f.submit '検索', class: 'btn btn-primary'  %>
+ <% end %>
+
+ <div id="search_result">
+  <% if @search_book.present? %>
+   <%= render 'search', search_book: @search_book %>
+  <% end %>
+ </div>
+</div>
+
           </div>
         </div>
       </div>
