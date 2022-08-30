@@ -1,6 +1,3 @@
-<% content_for(:body_attributes) do %>
-    data-turbolinks="false"
-<% end %>
 <div class='container px-5 px-sm-0'>
   <!--data: [<%= @yesterday6.count %>, <%= @yesterday5.count %>, <%= @yesterday4.count %>, <%= @yesterday3.count %>, <%= @yesterday2.count %>, <%= @yesterday_book.count %>, <%= @today_book.count%>],-->
   <div class='row'>
@@ -34,11 +31,11 @@
                 <%= @yesterday_book.count %>
               </td>
               <td>
-                <% if @yesterday_book == 0 %>
-                  昨日の投稿はありませぬ
+                <% if @yesterday_book.count == 0 or @today_book.count == 0%>
+                  0%
                 <% else %>
                   <% @the_day_before = @today_book.count / @yesterday_book.count.to_f %>
-                  <%=(@the_day_before*100).round  %>%
+                  <%=(@the_day_before*100).round  %>
                 <% end %>
               </td>
             </tr>

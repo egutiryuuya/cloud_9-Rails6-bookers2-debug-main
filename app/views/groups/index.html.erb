@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+           <%= render "users/info",user: @user %>
+        </div>
+        <div class="col-md-8 offset-md-1">
+            <table class ="table">
+                <thead>
+                    <th></th>
+                    <th>グループ名</th>
+                    <th>紹介文</th>
+                    <th></th>
+                </thead>
+            <% @group_lists.each do |group_list| %>
+                <tr>
+                    <td><%= image_tag group_list.get_group_image,size: '50x50' %></td>
+                    <td><%=group_list.name%></td>
+                    <td><%=group_list.introduction %></td>
+                    <% if group_list.owner_id == current_user.id %>
+                        <td><%= link_to "Edit",edit_group_path(group_list),class: "btn btn-success"%></td>
+                    <% end %>
+                </tr>
+                
+            <% end %>
+            </table>
+        </div>
+    </div>
+</div>
