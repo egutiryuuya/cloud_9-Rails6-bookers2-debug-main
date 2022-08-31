@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :messages,dependent: :destroy
   # DM機能
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
@@ -39,6 +40,10 @@ class User < ApplicationRecord
   def is_followed_by?(user)
     reverse_of_relationships.find_by(following_id: user.id).present?
   end
+  # def user_joined_group?(user)
+  #   group_users.find_by(users: user.id).present?
+  # end
+    
   
   def following?(user)
     followings.include?(user)

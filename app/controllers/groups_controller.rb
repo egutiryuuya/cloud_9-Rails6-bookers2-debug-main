@@ -10,11 +10,13 @@ class GroupsController < ApplicationController
   end
   def new
     @group = Group.new
+    
   end
   
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
+    @group.users << current_user
     if @group.save
       redirect_to groups_path
     else
@@ -25,6 +27,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @user = current_user
+    @membars = @group.users
   end
   
   def edit
@@ -45,6 +48,13 @@ class GroupsController < ApplicationController
     if delete_group.destroy
       redirect_to groups_path, notice: 'グループを削除しました'
     end
+  end
+  
+  def join
+    @group = Group.find(params[:group_id])
+    # <<で追加
+    @group.users << current_user
+    redirect_to groups_path
   end
   
   
