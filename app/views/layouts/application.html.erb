@@ -6,17 +6,19 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
+    
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
-  <body>
+  <body data-turbolinks="false">
     
     <%= render 'layouts/header' %>
     <div class="mx-auto"><div><%= render 'searches/search' %></div></div>
       <main>
         <p id="notice"><%= notice %></p>
       </main>
+      
     
   </body>
   <%= yield %>

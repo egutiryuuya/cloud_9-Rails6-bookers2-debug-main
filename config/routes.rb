@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  get 'seminars/index'
   get 'messages/new'
   get 'messages/create'
   get 'messages/show'
@@ -27,8 +28,11 @@ Rails.application.routes.draw do
     # フォロワー一覧
     get :followers, on: :member
   end
+  resources :events, only: [:new,:index,:create]
+  resources :seminars, only: [:index]
   
   get "search" => "searches#search" 
+  
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

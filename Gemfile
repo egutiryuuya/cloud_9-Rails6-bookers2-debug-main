@@ -63,3 +63,8 @@ gem 'rubocop-rails',require: false
 gem 'jquery-rails'
 gem 'impressionist'
 gem "chartkick"
+gem 'net-smtp'
+gem "simple_calendar", "~> 2.4"
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+

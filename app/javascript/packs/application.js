@@ -22,9 +22,13 @@ require("channels")
 require('jquery')
 require('chartkick')
 require('chart.js')
-
+//= require jquery
+//= require moment
+//= require fullcalendar
+//= require_tree .
 
 
 Turbolinks.start()
 ActiveStorage.start()
 $(document).on('turbolinks:load', function() { });
+

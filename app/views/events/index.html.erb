@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+    <%= link_to "イベント追加",new_event_path %>
+    <%= month_calendar events: @events do |date, events| %>
+      <%=date.day %>
+      <% events.each do |event| %>
+      <div>
+        <%= event.title %>
+      </div>
+    <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div id="calendar"></div>
+    </div>
+  </div>
+</div>

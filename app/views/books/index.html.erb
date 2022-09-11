@@ -11,5 +11,9 @@
       <h2>Books</h2>
       <%= render 'index', books: @books%>
     </div>
+    <!--シンプルカレンダー-->
+    <%= month_calendar do |date| %>
+      <%= date %>
+    <% end %>
   </div>
 </div>

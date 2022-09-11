@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_31_090925) do
+ActiveRecord::Schema.define(version: 2022_09_11_084938) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 2022_08_31_090925) do
     t.integer "user_id"
     t.integer "room_id"
     t.text "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -143,6 +151,14 @@ ActiveRecord::Schema.define(version: 2022_08_31_090925) do
 
   create_table "sees", force: :cascade do |t|
     t.string "ip"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "seminars", force: :cascade do |t|
+    t.string "title"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
